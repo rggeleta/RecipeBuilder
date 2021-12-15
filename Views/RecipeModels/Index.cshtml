@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RecipeBuilderFinalProject.Models.RecipeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Recipe Builder</h1>
+
+<h2>Yo, what up? You Hungry?</h2>
+<h3>
+    Then you're in the right place
+</h3>
+<h4>----------------</h4>
+<p>
+    <a asp-action="Create">Create Recipe!!</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrepTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecipeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecipeDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrepTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
